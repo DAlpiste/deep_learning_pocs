@@ -4,7 +4,7 @@ from cvlib.object_detection import detect_common_objects, draw_bbox
 
 def reshape_photo_with_mainity_with_path_image(path):
     img = cv2.imread(path)
-    bbox, label, conf = detect_common_objects(img, enable_gpu=True) # detect_common_objects(img, model="yolov3-tiny")
+    bbox, label, conf = detect_common_objects(img, threshold=0.5, enable_gpu=True) # detect_common_objects(img, model="yolov3-tiny")
     max_area = 0
     max_box = None
     for i, (x, y, w, h) in enumerate(bbox):
