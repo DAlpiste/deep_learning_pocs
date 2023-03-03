@@ -1,22 +1,21 @@
 import cv2
 import cvlib as cv
-from cvlib.object_detection import detect_common_objects, draw_bbox
 
 def reshape_photo_with_mainity_with_path_image(path):
     img = cv2.imread(path)
-    bbox, label, conf = detect_common_objects(img, threshold=0.5, enable_gpu=True) # detect_common_objects(img, model="yolov3-tiny")
+    faces, confidences = cv.detect_face(img, threshold=0.9, enable_gpu=True) # detect_common_objects(img, model="yolov3-tiny")
     max_area = 0
     max_box = None
-    for i, (x, y, w, h) in enumerate(bbox):
-        area = w * h
+    for i, (x, y, w, h) in enumerate(faces):
+        area = confidences[i]
         if area > max_area:
             max_area = area
-            max_box = bbox[i]
+            max_box = faces[i]
     if max_box is not None:
         try:
             print('Este es el maxbox: {0}'.format(max_box))
             x, y, w, h = max_box
-            cropped_img = img[y:y+h, x:x+w]
+            cropped_img = img[y-100:y+h-100, x-100:x+w-100]
 
             # Redimensionar la imagen a 512 x 512 píxeles
             resized_img = cv2.resize(cropped_img, (512, 512))
