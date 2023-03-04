@@ -2,8 +2,8 @@ from PIL import Image
 from tqdm import tqdm
 from smart_crop import *
 
-IMAGES_FOLDER_OPTIONAL = "./content/data/original/"
-INSTANCE_DIR = "./content/data/reshaped/"
+IMAGES_FOLDER_OPTIONAL = "./data/original/"
+INSTANCE_DIR = "./data/reshaped/"
 Crop_size = 512
 
 def convert_images():
