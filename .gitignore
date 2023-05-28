@@ -1,1 +1,8 @@
 venv
+__pycache__/
+stable-diffusion-v2-512/
+diffusers/
+Stable-Diffusion-Regularization-Images-person_ddim/
+src/models
+src/services
+src/updated_poc/data/sessions/daniel_alpiste/concept_images/
